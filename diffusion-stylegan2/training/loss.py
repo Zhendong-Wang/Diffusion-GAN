@@ -21,13 +21,13 @@ class Loss:
 #----------------------------------------------------------------------------
 
 class StyleGAN2Loss(Loss):
-    def __init__(self, device, G_mapping, G_synthesis, D, augment_pipe=None, style_mixing_prob=0.9, r1_gamma=10, pl_batch_shrink=2, pl_decay=0.01, pl_weight=2):
+    def __init__(self, device, G_mapping, G_synthesis, D, diffusion=None, style_mixing_prob=0.9, r1_gamma=10, pl_batch_shrink=2, pl_decay=0.01, pl_weight=2):
         super().__init__()
         self.device = device
         self.G_mapping = G_mapping
         self.G_synthesis = G_synthesis
         self.D = D
-        self.augment_pipe = augment_pipe
+        self.diffusion = diffusion
         self.style_mixing_prob = style_mixing_prob
         self.r1_gamma = r1_gamma
         self.pl_batch_shrink = pl_batch_shrink
@@ -48,8 +48,8 @@ class StyleGAN2Loss(Loss):
         return img, ws
 
     def run_D(self, img, c, sync):
-        if self.augment_pipe is not None:
-            img, t = self.augment_pipe(img)
+        if self.diffusion is not None:
+            img, t = self.diffusion(img)
         with misc.ddp_sync(self.D, sync):
             logits = self.D(img, c, t)
         return logits
@@ -65,7 +65,6 @@ class StyleGAN2Loss(Loss):
         if do_Gmain:
             with torch.autograd.profiler.record_function('Gmain_forward'):
                 gen_img, _gen_ws = self.run_G(gen_z, gen_c, sync=(sync and not do_Gpl))  # May get synced by Gpl.
-                # _, gen_img = self.augment_pipe(real_img, gen_img)
                 gen_logits = self.run_D(gen_img, gen_c, sync=False)
                 training_stats.report('Loss/scores/fake', gen_logits)
                 training_stats.report('Loss/signs/fake', gen_logits.sign())
@@ -79,7 +78,6 @@ class StyleGAN2Loss(Loss):
             with torch.autograd.profiler.record_function('Gpl_forward'):
                 batch_size = gen_z.shape[0] // self.pl_batch_shrink
                 gen_img, gen_ws = self.run_G(gen_z[:batch_size], gen_c[:batch_size], sync=sync)
-                # _, gen_img = self.augment_pipe(real_img[:batch_size], gen_img)
                 pl_noise = torch.randn_like(gen_img) / np.sqrt(gen_img.shape[2] * gen_img.shape[3])
                 with torch.autograd.profiler.record_function('pl_grads'), conv2d_gradfix.no_weight_gradients():
                     pl_grads = \
@@ -100,7 +98,6 @@ class StyleGAN2Loss(Loss):
         if do_Dmain:
             with torch.autograd.profiler.record_function('Dgen_forward'):
                 gen_img, _ = self.run_G(gen_z, gen_c, sync=False)
-                # _, gen_img = self.augment_pipe(real_img, gen_img)
                 gen_logits = self.run_D(gen_img, gen_c, sync=False)  # Gets synced by loss_Dreal.
                 training_stats.report('Loss/scores/fake', gen_logits)
                 training_stats.report('Loss/signs/fake', gen_logits.sign())
@@ -113,7 +110,6 @@ class StyleGAN2Loss(Loss):
         if do_Dmain or do_Dr1:
             name = 'Dreal_Dr1' if do_Dmain and do_Dr1 else 'Dreal' if do_Dmain else 'Dr1'
             with torch.autograd.profiler.record_function(name + '_forward'):
-                # real_img_tmp = self.augment_pipe.aug_real(real_img)
                 real_img_tmp = real_img.detach().requires_grad_(do_Dr1)
                 real_logits = self.run_D(real_img_tmp, real_c, sync=sync)
                 training_stats.report('Loss/scores/real', real_logits)
