@@ -1,6 +1,6 @@
 ## Diffusion-GAN &mdash; Official PyTorch implementation
 
-![Illustration](./docs/depict.png)
+![Illustration](./docs/diffusion-gan.png)
 
 **Diffusion-GAN: Training GANs with Diffusion**<br>
 Zhendong Wang, Huangjie Zheng, Pengcheng He, Weizhu Chen and Mingyuan Zhou <br>
