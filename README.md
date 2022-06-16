@@ -105,8 +105,8 @@ and refer to them for more details. The other major hyperparameters are listed b
 * `--noise_sd` diffusion noise standard deviation.
 * ` --ts_dist` t sampling distribution, $\pi(t)$ in paper.
 
-## Checkpoints
-Will be uploaded soon. 
+## Sampling and Evaluation with our checkpoints
+We provide the Diffusion-GAN checkpoints below:
 
 | Model | Dataset | Resolution | FID | model |
 |:---:|:---:|:---:|:---:| :---:|
@@ -130,6 +130,25 @@ Will be uploaded soon.
 | Diffusion-StyleGAN2 | FFHQ | 1024x1024 | 2.83 | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ffhq.pkl) |
 | Diffusion-StyleGAN2-DiffAug | FFHQ | 1024x1024 | 3.82 | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-diffaug-ffhq.pkl) |
 | Diffusion-StyleGAN2-ADA | FFHQ | 1024x1024 | 3.51 | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ada-ffhq.pkl) |
+
+To generate samples, run the following commands:
+
+```.bash
+# Generate FFHQ with pretrained Diffusion-StyleGAN2
+python generate.py --outdir=out --seeds=1-100 \
+    --network=https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ffhq.pkl
+```
+
+The checkpoints can be replaced with any pre-trained Diffusion-GAN checkpoints path downloaded from the table above.
+
+
+Similarly, the metrics can be calculated with the following commands:
+
+```.bash
+# Pre-trained network pickle: specify dataset explicitly, print result to stdout.
+python calc_metrics.py --metrics=fid50k_full --data=~/datasets/ffhq.zip --mirror=1 \
+    --network=https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ffhq.pkl
+```
 
 ## Citation
 
