@@ -27,13 +27,13 @@ performance improvement over strong GAN baselines for synthesizing photorealisti
 
 ## Build your Diffusion-GAN
 Here, we explain how to train general GANs with diffusion. We provide two ways: 
-a. plug-in as simple as a data augmentation methods; 
-b. training the GANs on diffusion chains with a timestep-dependent discriminator. 
+a. plug-in as simple as a data augmentation method; 
+b. training GANs on diffusion chains with a timestep-dependent discriminator. 
 Currently, we didn't find significant empirical differences of the two approaches, 
 while the second approach has stronger theoretical guarantees. We suspect when advanced timestep-dependent structure is applied in the discriminator,
 the second approach could become better, and we left that for future study. 
 
-**Simple Plug-in**
+### Simple Plug-in
 * Design a proper diffusion process based on the ```diffusion.py``` file
 * Apply diffusion on the inputs of discriminators, 
 ```logits = Discriminator(Diffusion(gen/real_images))```
@@ -45,7 +45,7 @@ if update_diffusion:  # batch_idx % ada_interval == 0
     diffusion.update_T()
 ```
 
-**Full Version**
+### Full Version
 * Add diffusion timestep `t` as an input for discriminators `logits = Discriminator(images, t)`. 
 You may need some modifications in your discriminator architecture. 
 * The other steps are the same as Simple Plug-in. Note that since discriminator depends on timesteps, 
@@ -57,12 +57,12 @@ logits = Discrimnator(diffused_images, t)
 
 ## Train our Diffusion-GAN
 
-**Requirements**
+### Requirements
 * 64-bit Python 3.7 and PyTorch 1.7.1/1.8.1. See [https://pytorch.org/](https://pytorch.org/) for PyTorch install instructions.
 * CUDA toolkit 11.0 or later. 
 * Python libraries: `pip install click requests tqdm pyspng ninja imageio-ffmpeg==0.4.3`.
 
-**Data Preparation**
+### Data Preparation
 
 In our paper, we trained our model on [CIFAR-10 (32 x 32)](https://www.cs.toronto.edu/~kriz/cifar.html), [STL-10 (64 x 64)](https://cs.stanford.edu/~acoates/stl10/),
 [LSUN (256 x 256)](https://github.com/fyu/lsun), [AFHQ (512 x 512)](https://github.com/clovaai/stargan-v2) and [FFHQ (1024 x 1024)](https://github.com/NVlabs/ffhq-dataset).
@@ -76,7 +76,7 @@ python dataset_tool.py --source=~/downloads/lsun/raw/church_lmdb --dest=~/datase
     --transform=center-crop-wide --width=256 --height=256 --max_images=200000
 ```
 
-**Training**
+### Training
 
 We show the training commands that we used below. In most cases, the training commands are similar, so below we use CIFAR-10 dataset
 as an example: 
@@ -98,15 +98,18 @@ For Diffusion-ProjectedGAN
 python train.py --outdir=training-runs --data="~/cifar10.zip" --gpus=4 --cfg cifar --kimg 50000 --target 0.45 --d_pos first --noise_sd 0.5
 ```
 We follows the `config` setting from [StyleGAN2-ADA](https://github.com/NVlabs/stylegan2-ada-pytorchhttps://github.com/NVlabs/stylegan2-ada-pytorch) 
-and refer to them for more details. The other major hyperparameters are listed below. 
-
+and refer to them for more details. The other major hyperparameters are listed and discussed below:
 * `--target` the discriminator target, which balances the level of diffusion intensity.
-* `--aug` domain-specific image augmentation, such as ada and differentiable augmentation, which is used for evaluate complementariness with diffusion. 
-* `--noise_sd` diffusion noise standard deviation.
-* ` --ts_dist` t sampling distribution, $\pi(t)$ in paper.
+* `--aug` domain-specific image augmentation, such as ADA and Differentiable Augmentation, which is used for evaluate complementariness with diffusion. 
+* `--noise_sd` diffusion noise standard deviation, which is set as 0.05 in our case.
+* ` --ts_dist` t sampling distribution, $\pi(t)$ in paper. 
+
+We evaluated two `t` sampling distribution `['priority', 'uniform']`,
+where `'priority'` denotes the Equation (11) in paper and `'uniform'` denotes random sampling. In most cases, `priority` works slightly better, while in some cases, such as FFHQ,
+`'uniform'` is better. 
 
 ## Sampling and Evaluation with our checkpoints
-We provide the Diffusion-GAN checkpoints below:
+We provide our Diffusion-GAN checkpoints below:
 
 | Model | Dataset | Resolution |  FID  | model |
 |:---:|:---:|:---:|:-----:| :---:|
@@ -139,7 +142,7 @@ python generate.py --outdir=out --seeds=1-100 \
     --network=https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ffhq.pkl
 ```
 
-The checkpoints can be replaced with any pre-trained Diffusion-GAN checkpoints path downloaded from the table above.
+The checkpoints can be replaced with any pre-trained Diffusion-GAN checkpoint path downloaded from the table above.
 
 
 Similarly, the metrics can be calculated with the following commands:
