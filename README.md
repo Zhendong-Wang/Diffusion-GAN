@@ -107,6 +107,7 @@ and refer to them for more details. The other major hyperparameters are listed b
 
 ## Checkpoints
 Will be uploaded soon. 
+
 | Model | Dataset | Resolution | FID | model |
 |:---:|:---:|:---:|:---:| :---:| :---:|:---:|
 | Diffusion-StyleGAN2 | CIFAR-10 | 32x32 | 3.19 | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-cifar10.pkl) |
@@ -129,6 +130,7 @@ Will be uploaded soon.
 | Diffusion-StyleGAN2 | FFHQ | 1024x1024 | 2.83 | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ffhq.pkl) |
 | Diffusion-StyleGAN2-DiffAug | FFHQ | 1024x1024 | 3.82 | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-diffaug-ffhq.pkl) |
 | Diffusion-StyleGAN2-ADA | FFHQ | 1024x1024 | 3.51 | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ada-ffhq.pkl) |
+
 ## Citation
 
 ```
