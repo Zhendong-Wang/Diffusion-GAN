@@ -21,6 +21,12 @@ augmentation. A rich set of experiments on diverse datasets show that DiffusionG
 provide stable and data-efficient GAN training, bringing consistent
 performance improvement over strong GAN baselines for synthesizing photorealistic images.*
 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/diffusion-gan-training-gans-with-diffusion/image-generation-on-stl-10)](https://paperswithcode.com/sota/image-generation-on-stl-10?p=diffusion-gan-training-gans-with-diffusion)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/diffusion-gan-training-gans-with-diffusion/image-generation-on-lsun-bedroom-256-x-256)](https://paperswithcode.com/sota/image-generation-on-lsun-bedroom-256-x-256?p=diffusion-gan-training-gans-with-diffusion)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/diffusion-gan-training-gans-with-diffusion/image-generation-on-afhq)](https://paperswithcode.com/sota/image-generation-on-afhq?p=diffusion-gan-training-gans-with-diffusion)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/diffusion-gan-training-gans-with-diffusion/image-generation-on-lsun-churches-256-x-256)](https://paperswithcode.com/sota/image-generation-on-lsun-churches-256-x-256?p=diffusion-gan-training-gans-with-diffusion)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/diffusion-gan-training-gans-with-diffusion/image-generation-on-ffhq)](https://paperswithcode.com/sota/image-generation-on-ffhq?p=diffusion-gan-training-gans-with-diffusion)
+
 ## ToDos
 - [x] Initial code release
 - [x] Providing pretrained models
