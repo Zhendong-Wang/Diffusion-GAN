@@ -4,7 +4,7 @@
 
 **Diffusion-GAN: Training GANs with Diffusion**<br>
 Zhendong Wang, Huangjie Zheng, Pengcheng He, Weizhu Chen and Mingyuan Zhou <br>
-https://arxiv.org/pdf/2206.02262.pdf <br>
+https://arxiv.org/abs/2206.02262 <br>
 
 Abstract: *For stable training of generative adversarial networks (GANs), injecting instance
 noise into the input of the discriminator is considered as a theoretically sound
