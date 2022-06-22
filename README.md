@@ -148,7 +148,7 @@ python generate.py --outdir=out --seeds=1-100 \
     --network=https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ffhq.pkl
 
 # Generate LSUN-Church with pretrained Diffusion-ProjectedGAN
-python generate.py --outdir=out --seeds=1-100 \
+python gen_images.py --outdir=out --seeds=1-100 \
     --network=https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-projectedgan-lsun-church.pkl
 ```
 
