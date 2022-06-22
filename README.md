@@ -117,28 +117,28 @@ where `'priority'` denotes the Equation (11) in paper and `'uniform'` denotes ra
 ## Sampling and Evaluation with our checkpoints
 We provide our Diffusion-GAN checkpoints below:
 
-| Model | Dataset | Resolution |  FID  | model |
-|:---:|:---:|:---:|:-----:| :---:|
-| Diffusion-StyleGAN2 | CIFAR-10 | 32x32 | 3.19  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-cifar10.pkl) |
-| Diffusion-StyleGAN2-DiffAug | CIFAR-10 | 32x32 | 2.92  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-diffaug-cifar10.pkl) |
-| Diffusion-StyleGAN2-ADA | CIFAR-10 | 32x32 | 2.67  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ada-cifar10.pkl) |
-| Diffusion-StyleGAN2 | STL-10 | 64x64 | 11.53 | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-stl10.pkl) |
-| Diffusion-StyleGAN2-DiffAug | STL-10 | 64x64 | 13.00 | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-diffaug-stl10.pkl) |
-| Diffusion-StyleGAN2-ADA | STL-10 | 64x64 | 14.51 | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ada-stl10.pkl) |
-| Diffusion-StyleGAN2 | LSUN-bedroom | 256x256 | 3.65  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-lsun-bedroom.pkl) |
-| Diffusion-StyleGAN2-DiffAug | LSUN-bedroom | 256x256 | 5.07  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-diffaug-lsun-bedroom.pkl) |
-| Diffusion-StyleGAN2-ADA | LSUN-bedroom | 256x256 | 3.95  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ada-lsun-bedroom.pkl) |
-| Diffusion-ProjectedGAN | LSUN-bedroom | 256x256 | 1.43  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-projectedgan-lsun-bedroom.pkl) |
-| Diffusion-StyleGAN2 | LSUN-church | 256x256 | 3.17  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-lsun-church.pkl) |
-| Diffusion-StyleGAN2-DiffAug | LSUN-church | 256x256 | 4.88  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-diffaug-lsun-church.pkl) |
-| Diffusion-StyleGAN2-ADA | LSUN-church | 256x256 | 3.38  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ada-lsun-church.pkl) |
-| Diffusion-ProjectedGAN | LSUN-church | 256x256 | 1.85  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-projectedgan-lsun-church.pkl) |
-| Diffusion-StyleGAN2 | AFHQ | 512x512 | 5.86  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-afhq.pkl) |
-| Diffusion-StyleGAN2-DiffAug | AFHQ | 512x512 | 6.63  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-diffaug-afhq.pkl) |
-| Diffusion-StyleGAN2-ADA | AFHQ | 512x512 | 4.73  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ada-afhq.pkl) |
-| Diffusion-StyleGAN2 | FFHQ | 1024x1024 | 2.83  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ffhq.pkl) |
-| Diffusion-StyleGAN2-DiffAug | FFHQ | 1024x1024 | 3.82  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-diffaug-ffhq.pkl) |
-| Diffusion-StyleGAN2-ADA | FFHQ | 1024x1024 | 3.51  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ada-ffhq.pkl) |
+| Model |   Dataset    | Resolution |  FID  | model |
+|:---:|:------------:|:---:|:-----:| :---:|
+| Diffusion-StyleGAN2 |   CIFAR-10   | 32x32 | 3.19  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-cifar10.pkl) |
+| Diffusion-StyleGAN2-DiffAug |   CIFAR-10   | 32x32 | 2.92  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-diffaug-cifar10.pkl) |
+| Diffusion-StyleGAN2-ADA |   CIFAR-10   | 32x32 | 2.67  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ada-cifar10.pkl) |
+| Diffusion-StyleGAN2 |    STL-10    | 64x64 | 11.53 | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-stl10.pkl) |
+| Diffusion-StyleGAN2-DiffAug |    STL-10    | 64x64 | 13.00 | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-diffaug-stl10.pkl) |
+| Diffusion-StyleGAN2-ADA |    STL-10    | 64x64 | 14.51 | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ada-stl10.pkl) |
+| Diffusion-StyleGAN2 | LSUN-Bedroom | 256x256 | 3.65  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-lsun-bedroom.pkl) |
+| Diffusion-StyleGAN2-DiffAug | LSUN-Bedroom | 256x256 | 5.07  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-diffaug-lsun-bedroom.pkl) |
+| Diffusion-StyleGAN2-ADA | LSUN-Bedroom | 256x256 | 3.95  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ada-lsun-bedroom.pkl) |
+| Diffusion-ProjectedGAN | LSUN-Bedroom | 256x256 | 1.43  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-projectedgan-lsun-bedroom.pkl) |
+| Diffusion-StyleGAN2 | LSUN-Church  | 256x256 | 3.17  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-lsun-church.pkl) |
+| Diffusion-StyleGAN2-DiffAug | LSUN-Church  | 256x256 | 4.88  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-diffaug-lsun-church.pkl) |
+| Diffusion-StyleGAN2-ADA | LSUN-Church  | 256x256 | 3.38  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ada-lsun-church.pkl) |
+| Diffusion-ProjectedGAN | LSUN-Church  | 256x256 | 1.85  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-projectedgan-lsun-church.pkl) |
+| Diffusion-StyleGAN2 |     AFHQ     | 512x512 | 5.86  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-afhq.pkl) |
+| Diffusion-StyleGAN2-DiffAug |     AFHQ     | 512x512 | 6.63  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-diffaug-afhq.pkl) |
+| Diffusion-StyleGAN2-ADA |     AFHQ     | 512x512 | 4.73  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ada-afhq.pkl) |
+| Diffusion-StyleGAN2 |     FFHQ     | 1024x1024 | 2.83  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ffhq.pkl) |
+| Diffusion-StyleGAN2-DiffAug |     FFHQ     | 1024x1024 | 3.82  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-diffaug-ffhq.pkl) |
+| Diffusion-StyleGAN2-ADA |     FFHQ     | 1024x1024 | 3.51  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ada-ffhq.pkl) |
 
 To generate samples, run the following commands:
 
@@ -146,6 +146,10 @@ To generate samples, run the following commands:
 # Generate FFHQ with pretrained Diffusion-StyleGAN2
 python generate.py --outdir=out --seeds=1-100 \
     --network=https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ffhq.pkl
+
+# Generate LSUN-Church with pretrained Diffusion-ProjectedGAN
+python generate.py --outdir=out --seeds=1-100 \
+    --network=https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-projectedgan-lsun-church.pkl
 ```
 
 The checkpoints can be replaced with any pre-trained Diffusion-GAN checkpoint path downloaded from the table above.
