@@ -101,7 +101,7 @@ python train.py --outdir=training-runs --data="~/cifar10.zip" --gpus=4 --cfg cif
 ```
 For Diffusion-ProjectedGAN
 ```.bash
-python train.py --outdir=training-runs --data="~/cifar10.zip" --gpus=4 --cfg cifar --kimg 50000 --target 0.45 --d_pos first --noise_sd 0.5
+python train.py --outdir=training-runs --data="~/cifar10.zip" --gpus=4 --cfg fastgan --kimg 50000 --target 0.45 --d_pos first --noise_sd 0.5
 ```
 We follows the `config` setting from [StyleGAN2-ADA](https://github.com/NVlabs/stylegan2-ada-pytorchhttps://github.com/NVlabs/stylegan2-ada-pytorch) 
 and refer to them for more details. The other major hyperparameters are listed and discussed below:

@@ -133,7 +133,7 @@ def parse_comma_separated_list(s):
 @click.option('--batch',        help='Total batch size', metavar='INT',                         type=click.IntRange(min=1), required=True)
 
 # Diffusion config. (Most diffusion settings are fixed in the projector.py file)
-@click.option('--d_target',     help='Discriminator target', metavar='FLOAT',                   type=float, default=0.6, required=True)
+@click.option('--target',       help='Discriminator target', metavar='FLOAT',                   type=float, default=0.6, required=True)
 @click.option('--d_pos',        help='Diffusion adding position', metavar='STR',                type=str,   default='first')
 @click.option('--noise_sd',     help='Diffusion noise standard deviation', metavar='FLOAT',     type=float, default=0.5)
 @click.option('--ada_kimg',     help='# kimgs needed to push diffusion to maximum level',       type=int,   default=100)
@@ -173,7 +173,7 @@ def main(**kwargs):
     c.G_opt_kwargs = dnnlib.EasyDict(class_name='torch.optim.Adam', betas=[0,0.99], eps=1e-8)
     c.D_opt_kwargs = dnnlib.EasyDict(class_name='torch.optim.Adam', betas=[0,0.99], eps=1e-8)
     c.data_loader_kwargs = dnnlib.EasyDict(pin_memory=True, prefetch_factor=2)
-    c.ada_target = opts.d_target
+    c.target = opts.target
     c.ada_kimg = opts.ada_kimg
 
     # Training set.
@@ -239,7 +239,7 @@ def main(**kwargs):
     # Description string.
     desc = f'{opts.cfg:s}-{dataset_name:s}-gpus{c.num_gpus:d}-batch{c.batch_size:d}-d_pos-{opts.d_pos}-noise_sd-{opts.noise_sd}'
     if opts.d_pos:
-        desc += f"-d_target{opts.d_target}"
+        desc += f"-target{opts.target}"
     if opts.ada_kimg:
         desc += f'-ada_kimg{opts.ada_kimg}'
     if opts.desc is not None:

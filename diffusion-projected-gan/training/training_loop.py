@@ -122,7 +122,7 @@ def training_loop(
     abort_fn                = None,     # Callback function for determining whether to abort training. Must return consistent results across ranks.
     progress_fn             = None,     # Callback function for updating training progress. Called for all ranks.
     restart_every           = -1,       # Time interval in seconds to exit code
-    ada_target              = 0.9,      # ADA target value. None = fixed p.
+    target                  = 0.9,      # ADA target value. None = fixed p.
     ada_interval            = 4,        # How often to perform ADA adjustment?
     ada_kimg                = 100,
 ):
@@ -347,7 +347,7 @@ def training_loop(
         # Execute ADA heuristic.
         if (ada_stats is not None) and (batch_idx % ada_interval == 0):
             ada_stats.update()
-            adjust = np.sign(ada_stats['Loss/signs/real'] - ada_target) * (batch_size * ada_interval) / (ada_kimg * 1000)
+            adjust = np.sign(ada_stats['Loss/signs/real'] - target) * (batch_size * ada_interval) / (ada_kimg * 1000)
             D.feature_network.diffusion.p = (D.feature_network.diffusion.p + adjust).clip(min=0., max=1.)
             D.feature_network.diffusion.update_T()
 
