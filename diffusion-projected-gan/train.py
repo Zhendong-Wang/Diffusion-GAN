@@ -140,7 +140,7 @@ def parse_comma_separated_list(s):
 
 # Optional features.
 @click.option('--cond',         help='Train conditional model', metavar='BOOL',                 type=bool, default=False, show_default=True)
-@click.option('--mirror',       help='Enable dataset x-flips', metavar='BOOL',                  type=bool, default=True, show_default=True)
+@click.option('--mirror',       help='Enable dataset x-flips', metavar='BOOL',                  type=bool, default=True,  show_default=True)
 @click.option('--resume',       help='Resume from given network pickle', metavar='[PATH|URL]',  type=str)
 
 # Misc hyperparameters.
