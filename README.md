@@ -122,9 +122,11 @@ We provide our Diffusion-GAN checkpoints below:
 | Diffusion-StyleGAN2 |   CIFAR-10   | 32x32 | 3.19  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-cifar10.pkl) |
 | Diffusion-StyleGAN2-DiffAug |   CIFAR-10   | 32x32 | 2.92  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-diffaug-cifar10.pkl) |
 | Diffusion-StyleGAN2-ADA |   CIFAR-10   | 32x32 | 2.67  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ada-cifar10.pkl) |
+| Diffusion-ProjectedGAN |   CIFAR-10   | 32x32 | 2.54  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-projectedgan-cifar10.pkl) |
 | Diffusion-StyleGAN2 |    STL-10    | 64x64 | 11.53 | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-stl10.pkl) |
 | Diffusion-StyleGAN2-DiffAug |    STL-10    | 64x64 | 13.00 | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-diffaug-stl10.pkl) |
 | Diffusion-StyleGAN2-ADA |    STL-10    | 64x64 | 14.51 | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ada-stl10.pkl) |
+| Diffusion-ProjectedGAN |    STL-10    | 64x64 | 6.91 | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-projectedgan-stl10.pkl) |
 | Diffusion-StyleGAN2 | LSUN-Bedroom | 256x256 | 3.65  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-lsun-bedroom.pkl) |
 | Diffusion-StyleGAN2-DiffAug | LSUN-Bedroom | 256x256 | 5.07  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-diffaug-lsun-bedroom.pkl) |
 | Diffusion-StyleGAN2-ADA | LSUN-Bedroom | 256x256 | 3.95  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ada-lsun-bedroom.pkl) |
