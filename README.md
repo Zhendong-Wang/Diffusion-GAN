@@ -173,7 +173,7 @@ python calc_metrics.py --metrics=fid50k_full --data=~/datasets/ffhq.zip --mirror
   author    = {Wang, Zhendong and Zheng, Huangjie and He, Pengcheng and Chen, Weizhu and Zhou, Mingyuan},
   journal   = {arXiv preprint arXiv:2206.02262},
   year      = {2022},
-  url       = {https://arxiv.org/abs/2206.02262},
+  url       = {https://arxiv.org/abs/2206.02262}
 }
 ```
 
