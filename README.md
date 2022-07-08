@@ -168,11 +168,10 @@ python calc_metrics.py --metrics=fid50k_full --data=~/datasets/ffhq.zip --mirror
 ## Citation
 
 ```
-@InProceedings{wang2022diffusiongan,
-  author    = {Wang, Zhendong and Zheng, Huangjie and He, Pengcheng and Chen, Weizhu and Zhou, Mingyuan},
+@article{wang2022diffusiongan,
   title     = {Diffusion-GAN: Training GANs with Diffusion},
-  journal   = {arXiv.org},
-  volume    = {abs/2206.02262},
+  author    = {Wang, Zhendong and Zheng, Huangjie and He, Pengcheng and Chen, Weizhu and Zhou, Mingyuan},
+  journal   = {arXiv preprint arXiv:2206.02262},
   year      = {2022},
   url       = {https://arxiv.org/abs/2206.02262},
 }
