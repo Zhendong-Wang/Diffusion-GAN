@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- === Header Starts === -->
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>InsGen</title>
+
+  <link href="./assets/bootstrap.min.css" rel="stylesheet">
+  <link href="./assets/font.css" rel="stylesheet" type="text/css">
+  <link href="./assets/style.css" rel="stylesheet" type="text/css">
+</head>
+<!-- === Header Ends === -->
+
+
+<body>
+
+
+<!-- === Home Section Starts === -->
+<div class="section">
+  <!-- === Title Starts === -->
+  <div class="header">
+    <div class="logo">
+      <a href="https://genforce.github.io/" target="_blank"><img src="./assets/genforce.png"></a>
+    </div>
+    <div class="title", style="padding-top: 25pt;">  <!-- Set padding as 10 if title is with two lines. -->
+      Data-Efficient Instance Generation from Instance Discrimination
+    </div>
+  </div>
+  <!-- === Title Ends === -->
+  <div class="author">
+    <a href="http://ceyuan.me/" target="_blank">Ceyuan Yang</a><sup>1</sup>,&nbsp;
+    <a href="http://shenyujun.github.io/" target="_blank">Yujun Shen</a><sup>2</sup>,&nbsp;
+    <a href="https://justimyhxu.github.io/academic.html" target="_blank">Yinghao Xu</a><sup>1</sup>,&nbsp;
+    <a href="http://bzhou.ie.cuhk.edu.hk" target="_blank">Bolei Zhou</a><sup>1</sup>
+  </div>
+  <div class="institution">
+    <sup>1</sup> The Chinese University of Hong Kong <br>
+    <sup>2</sup> ByteDance Inc. <br>
+  </div>
+  <div class="link">
+    <a href="https://arxiv.org/pdf/2106.04566.pdf" target="_blank">[Paper]</a>&nbsp;
+    <a href="https://github.com/genforce/insgen" target="_blank">[Code]</a>
+  </div>
+  <div class="teaser">
+    <img src="./assets/framework.jpg">
+  </div>
+</div>
+<!-- === Home Section Ends === -->
+
+
+<!-- === Overview Section Starts === -->
+<div class="section">
+  <div class="title">Overview</div>
+  <div class="body">
+    In this work, we develop a novel data-efficient Instance Generation (InsGen) method for training GANs with limited data. With the instance discrimination as an auxiliary task, our method makes the best use of both real and fake images to train the discriminator. In turn the discriminator is exploited to train the generator to synthesize as many diverse images as possible. Experiments under different data regimes show that InsGen brings a substantial improvement over the baseline in terms of both image quality and image diversity, and outperforms previous data augmentation algorithms by a large margin.
+  </div>
+</div>
+<!-- === Overview Section Ends === -->
+
+
+<!-- === Result Section Starts === -->
+<div class="section">
+  <div class="title">Results</div>
+  <div class="body">
+    Here we provide some synthesized samples with different numbers of training images and correspoding FID.  
+
+    <!-- Adjust the number of rows and columns (EVERY project differs). -->
+    <table width="100%" style="margin: 20pt 0; text-align: center;">
+      <tr>
+        <td><img src="./assets/main_results.jpg" width="95%"></td>
+      </tr>
+    </table>
+
+    <table width="100%" style="margin: 20pt 0; text-align: center;">
+      <tr>
+        <td><img src="./assets/limitations.jpg" width="95%"></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<!-- === Result Section Ends === -->
+
+
+<!-- === Reference Section Starts === -->
+<div class="section">
+  <div class="bibtex">BibTeX</div>
+<pre>
+@article{yang2021insgen,
+  title   = {Data-Efficient Instance Generation from Instance Discrimination},
+  author  = {Yang, Ceyuan and Shen, Yujun and Xu, Yinghao and Zhou, Bolei},
+  journal = {arXiv preprint arXiv:2106.04566},
+  year    = {2021}
+}
+</pre>
+
+  <!-- BZ: we should give other related work enough credits, -->
+  <!--     so please include some most relevant work and leave some comment to summarize work and the difference. -->
+  <div class="ref">Related Work</div>
+  <div class="citation">
+    <div class="image"><img src="./assets/stylegan2-ada-teaser-1024x252.png"></div>
+    <div class="comment">
+      <a href="https://arxiv.org/pdf/2006.06676.pdf" target="_blank">
+        T. Karras, M. Aittala, J. Hellsten, S. Laine, J. Lehtinen, T. Aila.
+        Training Generative Adversarial Networks with Limited Data.
+        NeurIPS, 2020.</a><br>
+      <b>Comment:</b>
+      Proposes an adaptive discriminator augmentation mechanism that significantly stabilizes training in limited data regimes.
+    </div>
+  </div>
+
+  <div class="citation">
+    <div class="image"><img src="./assets/diffaug.jpeg"></div>
+    <div class="comment">
+      <a href="https://arxiv.org/pdf/2006.10738.pdf" target="_blank">
+        S. Zhao, Z. Liu, J. Lin, JY. Zhu, and S. Han.
+        Differentiable Augmentation for Data-Efficient GAN Training.
+        NeurIPS, 2020.</a><br>
+      <b>Comment:</b>
+      Imposes various types of differentiable augmentations on both real and fake samples.
+    </div>
+  </div>
+
+  <div class="citation">
+    <div class="image"><img src="./assets/contrad.jpeg"></div>
+    <div class="comment">
+      <a href="" target="_blank">
+        J. Jeong, J. Shin.
+        Training GANs with Stronger Augmentations via Contrastive Discriminator.
+        ICLR, 2021.</a><br>
+      <b>Comment:</b>
+      Proposes a novel discriminator of GAN showing that contrastive representation learning, e.g., SimCLR, and GAN can benefit each other when they are jointly trained.
+    </div>
+  </div>
+
+
+</div>
+<!-- === Reference Section Ends === -->
+
+
+</body>
+</html>

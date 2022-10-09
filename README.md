@@ -21,11 +21,14 @@ augmentation. A rich set of experiments on diverse datasets show that DiffusionG
 provide stable and data-efficient GAN training, bringing consistent
 performance improvement over strong GAN baselines for synthesizing photorealistic images.*
 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/diffusion-gan-training-gans-with-diffusion/image-generation-on-celeba-64x64)](https://paperswithcode.com/sota/image-generation-on-celeba-64x64?p=diffusion-gan-training-gans-with-diffusion)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/diffusion-gan-training-gans-with-diffusion/image-generation-on-stl-10)](https://paperswithcode.com/sota/image-generation-on-stl-10?p=diffusion-gan-training-gans-with-diffusion)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/diffusion-gan-training-gans-with-diffusion/image-generation-on-lsun-bedroom-256-x-256)](https://paperswithcode.com/sota/image-generation-on-lsun-bedroom-256-x-256?p=diffusion-gan-training-gans-with-diffusion)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/diffusion-gan-training-gans-with-diffusion/image-generation-on-afhq)](https://paperswithcode.com/sota/image-generation-on-afhq?p=diffusion-gan-training-gans-with-diffusion)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/diffusion-gan-training-gans-with-diffusion/image-generation-on-afhq-wild)](https://paperswithcode.com/sota/image-generation-on-afhq-wild?p=diffusion-gan-training-gans-with-diffusion)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/diffusion-gan-training-gans-with-diffusion/image-generation-on-afhq-cat)](https://paperswithcode.com/sota/image-generation-on-afhq-cat?p=diffusion-gan-training-gans-with-diffusion)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/diffusion-gan-training-gans-with-diffusion/image-generation-on-afhq-dog)](https://paperswithcode.com/sota/image-generation-on-afhq-dog?p=diffusion-gan-training-gans-with-diffusion)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/diffusion-gan-training-gans-with-diffusion/image-generation-on-lsun-churches-256-x-256)](https://paperswithcode.com/sota/image-generation-on-lsun-churches-256-x-256?p=diffusion-gan-training-gans-with-diffusion)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/diffusion-gan-training-gans-with-diffusion/image-generation-on-ffhq)](https://paperswithcode.com/sota/image-generation-on-ffhq?p=diffusion-gan-training-gans-with-diffusion)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/diffusion-gan-training-gans-with-diffusion/image-generation-on-ffhq-1024-x-1024)](https://paperswithcode.com/sota/image-generation-on-ffhq-1024-x-1024?p=diffusion-gan-training-gans-with-diffusion)
 
 ## ToDos
 - [x] Initial code release
@@ -103,6 +106,11 @@ For Diffusion-ProjectedGAN
 ```.bash
 python train.py --outdir=training-runs --data="~/cifar10.zip" --gpus=4 --batch 64 --batch-gpu=16 --cfg fastgan --kimg 50000 --target 0.45 --d_pos first --noise_sd 0.5
 ```
+For Diffusion-InsGen
+```.bash
+python train.py --outdir=training-runs --data="~/afhq-wild.zip" --gpus=8 --cfg paper512 --kimg 25000
+```
+
 We follows the `config` setting from [StyleGAN2-ADA](https://github.com/NVlabs/stylegan2-ada-pytorchhttps://github.com/NVlabs/stylegan2-ada-pytorch) 
 and refer to them for more details. The other major hyperparameters are listed and discussed below:
 * `--target` the discriminator target, which balances the level of diffusion intensity.
@@ -117,30 +125,22 @@ where `'priority'` denotes the Equation (11) in paper and `'uniform'` denotes ra
 ## Sampling and Evaluation with our checkpoints
 We provide our Diffusion-GAN checkpoints below:
 
-| Model |   Dataset    | Resolution |  FID  | model |
-|:---:|:------------:|:---:|:-----:| :---:|
-| Diffusion-StyleGAN2 |   CIFAR-10   | 32x32 | 3.19  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-cifar10.pkl) |
-| Diffusion-StyleGAN2-DiffAug |   CIFAR-10   | 32x32 | 2.92  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-diffaug-cifar10.pkl) |
-| Diffusion-StyleGAN2-ADA |   CIFAR-10   | 32x32 | 2.67  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ada-cifar10.pkl) |
-| Diffusion-ProjectedGAN |   CIFAR-10   | 32x32 | 2.54  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-projectedgan-cifar10.pkl) |
-| Diffusion-StyleGAN2 |    STL-10    | 64x64 | 11.53 | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-stl10.pkl) |
-| Diffusion-StyleGAN2-DiffAug |    STL-10    | 64x64 | 13.00 | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-diffaug-stl10.pkl) |
-| Diffusion-StyleGAN2-ADA |    STL-10    | 64x64 | 14.51 | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ada-stl10.pkl) |
-| Diffusion-ProjectedGAN |    STL-10    | 64x64 | 6.91 | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-projectedgan-stl10.pkl) |
-| Diffusion-StyleGAN2 | LSUN-Bedroom | 256x256 | 3.65  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-lsun-bedroom.pkl) |
-| Diffusion-StyleGAN2-DiffAug | LSUN-Bedroom | 256x256 | 5.07  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-diffaug-lsun-bedroom.pkl) |
-| Diffusion-StyleGAN2-ADA | LSUN-Bedroom | 256x256 | 3.95  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ada-lsun-bedroom.pkl) |
-| Diffusion-ProjectedGAN | LSUN-Bedroom | 256x256 | 1.43  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-projectedgan-lsun-bedroom.pkl) |
-| Diffusion-StyleGAN2 | LSUN-Church  | 256x256 | 3.17  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-lsun-church.pkl) |
-| Diffusion-StyleGAN2-DiffAug | LSUN-Church  | 256x256 | 4.88  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-diffaug-lsun-church.pkl) |
-| Diffusion-StyleGAN2-ADA | LSUN-Church  | 256x256 | 3.38  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ada-lsun-church.pkl) |
-| Diffusion-ProjectedGAN | LSUN-Church  | 256x256 | 1.85  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-projectedgan-lsun-church.pkl) |
-| Diffusion-StyleGAN2 |     AFHQ     | 512x512 | 5.86  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-afhq.pkl) |
-| Diffusion-StyleGAN2-DiffAug |     AFHQ     | 512x512 | 6.63  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-diffaug-afhq.pkl) |
-| Diffusion-StyleGAN2-ADA |     AFHQ     | 512x512 | 4.73  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ada-afhq.pkl) |
-| Diffusion-StyleGAN2 |     FFHQ     | 1024x1024 | 2.83  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ffhq.pkl) |
-| Diffusion-StyleGAN2-DiffAug |     FFHQ     | 1024x1024 | 3.82  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-diffaug-ffhq.pkl) |
-| Diffusion-StyleGAN2-ADA |     FFHQ     | 1024x1024 | 3.51  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ada-ffhq.pkl) |
+|            Model            |   Dataset    | Resolution |  FID  |                                                        Checkpoint                                                         |
+|:---------------------------:|:------------:|:----------:|:-----:|:-------------------------------------------------------------------------------------------------------------------------:|
+|     Diffusion-StyleGAN2     |   CIFAR-10   |   32x32    | 3.19  |     [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-cifar10.pkl)     |
+|     Diffusion-StyleGAN2     |    CelebA    |   64x64    | 1.69  |    [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-celeba64.pkl)     |
+|     Diffusion-StyleGAN2     |    STL-10    |   64x64    | 11.53 |      [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-stl10.pkl)      |
+|     Diffusion-StyleGAN2     | LSUN-Bedroom |  256x256   | 3.65  |  [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-lsun-bedroom.pkl)   |
+|     Diffusion-StyleGAN2     | LSUN-Church  |  256x256   | 3.17  |   [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-lsun-church.pkl)   |
+|     Diffusion-StyleGAN2     |     FFHQ     | 1024x1024  | 2.83  |      [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ffhq.pkl)       |
+|   Diffusion-ProjectedGAN    |   CIFAR-10   |   32x32    | 2.54  |   [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-projectedgan-cifar10.pkl)    |
+|   Diffusion-ProjectedGAN    |    STL-10    |   64x64    | 6.91  |    [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-projectedgan-stl10.pkl)     |
+|   Diffusion-ProjectedGAN    | LSUN-Bedroom |  256x256   | 1.43  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-projectedgan-lsun-bedroom.pkl) |
+|   Diffusion-ProjectedGAN    | LSUN-Church  |  256x256   | 1.85  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-projectedgan-lsun-church.pkl)  |
+|      Diffusion-InsGen       |   AFHQ-Cat   |  512x512   | 2.40  |      [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-insgen-afhqcat.pkl)       |
+|     Diffusion-InsGen        |   AFHQ-Dog   |  512x512   | 4.83  |      [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-insgen-afhqdog.pkl)       |
+|      Diffusion-InsGen       |  AFHQ-Wild   |  512x512   | 1.51  |      [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-insgen-afhqwild.pkl)      |
+
 
 To generate samples, run the following commands:
 
@@ -179,4 +179,4 @@ python calc_metrics.py --metrics=fid50k_full --data=~/datasets/ffhq.zip --mirror
 
 ## Acknowledgements
 
-Our code builds upon the awesome [StyleGAN2-ADA repo](https://github.com/NVlabs/stylegan2-ada-pytorch) and [ProjectedGAN repo](https://github.com/autonomousvision/projected_gan), respectively by Karras et al and Axel Sauer et al.
+Our code builds upon the awesome [StyleGAN2-ADA repo](https://github.com/NVlabs/stylegan2-ada-pytorch), [InsGen repo](https://github.com/genforce/insgen) and [ProjectedGAN repo](https://github.com/autonomousvision/projected_gan), respectively by Karras et al, Ceyuan Yang et al and Axel Sauer et al.
