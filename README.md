@@ -94,14 +94,6 @@ For Diffusion-GAN,
 ```.bash
 python train.py --outdir=training-runs --data="~/cifar10.zip" --gpus=4 --cfg cifar --kimg 50000 --aug no --target 0.6 --noise_sd 0.05 --ts_dist priority
 ```
-For Diffusion-GAN + DIFF, 
-```.bash
-python train.py --outdir=training-runs --data="~/cifar10.zip" --gpus=4 --cfg cifar --kimg 50000 --aug diff --target 0.6 --noise_sd 0.05 --ts_dist priority
-```
-For Diffusion-GAN + ADA, 
-```.bash
-python train.py --outdir=training-runs --data="~/cifar10.zip" --gpus=4 --cfg cifar --kimg 50000 --aug ada --ada_maxp 0.25 --target 0.6 --noise_sd 0.05 --ts_dist priority
-```
 For Diffusion-ProjectedGAN
 ```.bash
 python train.py --outdir=training-runs --data="~/cifar10.zip" --gpus=4 --batch 64 --batch-gpu=16 --cfg fastgan --kimg 50000 --target 0.45 --d_pos first --noise_sd 0.5
