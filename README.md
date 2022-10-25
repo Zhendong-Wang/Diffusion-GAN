@@ -115,23 +115,23 @@ where `'priority'` denotes the Equation (11) in paper and `'uniform'` denotes ra
 `'uniform'` is better. 
 
 ## Sampling and Evaluation with our checkpoints
-We provide our Diffusion-GAN checkpoints below:
+We provide our Diffusion-GAN checkpoints on our [Hugging Face](https://huggingface.co/zhendongw/diffusion-gan/tree/main/checkpoints) page. We copy and paste the links below for quick access. 
 
 |            Model            |   Dataset    | Resolution |  FID  |                                                        Checkpoint                                                         |
 |:---------------------------:|:------------:|:----------:|:-----:|:-------------------------------------------------------------------------------------------------------------------------:|
-|     Diffusion-StyleGAN2     |   CIFAR-10   |   32x32    | 3.19  |     [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-cifar10.pkl)     |
-|     Diffusion-StyleGAN2     |    CelebA    |   64x64    | 1.69  |    [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-celeba64.pkl)     |
-|     Diffusion-StyleGAN2     |    STL-10    |   64x64    | 11.53 |      [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-stl10.pkl)      |
-|     Diffusion-StyleGAN2     | LSUN-Bedroom |  256x256   | 3.65  |  [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-lsun-bedroom.pkl)   |
-|     Diffusion-StyleGAN2     | LSUN-Church  |  256x256   | 3.17  |   [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-lsun-church.pkl)   |
-|     Diffusion-StyleGAN2     |     FFHQ     | 1024x1024  | 2.83  |      [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-stylegan2-ffhq.pkl)       |
-|   Diffusion-ProjectedGAN    |   CIFAR-10   |   32x32    | 2.54  |   [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-projectedgan-cifar10.pkl)    |
-|   Diffusion-ProjectedGAN    |    STL-10    |   64x64    | 6.91  |    [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-projectedgan-stl10.pkl)     |
-|   Diffusion-ProjectedGAN    | LSUN-Bedroom |  256x256   | 1.43  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-projectedgan-lsun-bedroom.pkl) |
-|   Diffusion-ProjectedGAN    | LSUN-Church  |  256x256   | 1.85  | [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-projectedgan-lsun-church.pkl)  |
-|      Diffusion-InsGen       |   AFHQ-Cat   |  512x512   | 2.40  |      [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-insgen-afhqcat.pkl)       |
-|     Diffusion-InsGen        |   AFHQ-Dog   |  512x512   | 4.83  |      [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-insgen-afhqdog.pkl)       |
-|      Diffusion-InsGen       |  AFHQ-Wild   |  512x512   | 1.51  |      [download](https://tsciencescu.blob.core.windows.net/projectshzheng/DiffusionGAN/diffusion-insgen-afhqwild.pkl)      |
+|     Diffusion-StyleGAN2     |   CIFAR-10   |   32x32    | 3.19  |     [download](https://huggingface.co/zhendongw/diffusion-gan/resolve/main/checkpoints/diffusion-stylegan2-cifar10.pkl)     |
+|     Diffusion-StyleGAN2     |    CelebA    |   64x64    | 1.69  |    [download](https://huggingface.co/zhendongw/diffusion-gan/resolve/main/checkpoints/diffusion-stylegan2-celeba64.pkl)     |
+|     Diffusion-StyleGAN2     |    STL-10    |   64x64    | 11.53 |      [download](https://huggingface.co/zhendongw/diffusion-gan/resolve/main/checkpoints/diffusion-stylegan2-stl10.pkl)      |
+|     Diffusion-StyleGAN2     | LSUN-Bedroom |  256x256   | 3.65  |  [download](https://huggingface.co/zhendongw/diffusion-gan/resolve/main/checkpoints/diffusion-stylegan2-lsun-bedroom.pkl)   |
+|     Diffusion-StyleGAN2     | LSUN-Church  |  256x256   | 3.17  |   [download](https://huggingface.co/zhendongw/diffusion-gan/resolve/main/checkpoints/diffusion-stylegan2-lsun-church.pkl)   |
+|     Diffusion-StyleGAN2     |     FFHQ     | 1024x1024  | 2.83  |      [download](https://huggingface.co/zhendongw/diffusion-gan/resolve/main/checkpoints/diffusion-stylegan2-ffhq.pkl)       |
+|   Diffusion-ProjectedGAN    |   CIFAR-10   |   32x32    | 2.54  |   [download](https://huggingface.co/zhendongw/diffusion-gan/resolve/main/checkpoints/diffusion-projectedgan-cifar10.pkl)    |
+|   Diffusion-ProjectedGAN    |    STL-10    |   64x64    | 6.91  |    [download](https://huggingface.co/zhendongw/diffusion-gan/resolve/main/checkpoints/diffusion-projectedgan-stl10.pkl)     |
+|   Diffusion-ProjectedGAN    | LSUN-Bedroom |  256x256   | 1.43  | [download](https://huggingface.co/zhendongw/diffusion-gan/resolve/main/checkpoints/diffusion-projectedgan-lsun-bedroom.pkl) |
+|   Diffusion-ProjectedGAN    | LSUN-Church  |  256x256   | 1.85  | [download](https://huggingface.co/zhendongw/diffusion-gan/resolve/main/checkpoints/diffusion-projectedgan-lsun-church.pkl)  |
+|      Diffusion-InsGen       |   AFHQ-Cat   |  512x512   | 2.40  |      [download](https://huggingface.co/zhendongw/diffusion-gan/resolve/main/checkpoints/diffusion-insgen-afhqcat.pkl)       |
+|     Diffusion-InsGen        |   AFHQ-Dog   |  512x512   | 4.83  |      [download](https://huggingface.co/zhendongw/diffusion-gan/resolve/main/checkpoints/diffusion-insgen-afhqdog.pkl)       |
+|      Diffusion-InsGen       |  AFHQ-Wild   |  512x512   | 1.51  |      [download](https://huggingface.co/zhendongw/diffusion-gan/resolve/main/checkpoints/diffusion-insgen-afhqwild.pkl)      |
 
 
 To generate samples, run the following commands:
