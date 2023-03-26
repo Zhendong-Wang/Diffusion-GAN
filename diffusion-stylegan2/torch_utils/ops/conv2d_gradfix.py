@@ -1,10 +1,3 @@
-# Copyright (c) 2021, NVIDIA CORPORATION.  All rights reserved.
-#
-# NVIDIA CORPORATION and its licensors retain all intellectual property
-# and proprietary rights in and to this software, related documentation
-# and any modifications thereto.  Any use, reproduction, disclosure or
-# distribution of this software and related documentation without an express
-# license agreement from NVIDIA CORPORATION is strictly prohibited.
 
 """Custom replacement for `torch.nn.functional.conv2d` that supports
 arbitrarily high order gradients with zero performance penalty."""
@@ -12,6 +5,7 @@ arbitrarily high order gradients with zero performance penalty."""
 import warnings
 import contextlib
 import torch
+from distutils.version import LooseVersion
 
 # pylint: disable=redefined-builtin
 # pylint: disable=arguments-differ
@@ -21,6 +15,7 @@ import torch
 
 enabled = False                     # Enable the custom op by setting this to true.
 weight_gradients_disabled = False   # Forcefully disable computation of gradients with respect to the weights.
+old_version = LooseVersion(torch.__version__) < LooseVersion('1.11.0')
 
 @contextlib.contextmanager
 def no_weight_gradients():
@@ -50,7 +45,7 @@ def _should_use_custom_op(input):
         return False
     if input.device.type != 'cuda':
         return False
-    if any(torch.__version__.startswith(x) for x in ['1.7.', '1.8.', '1.9']):
+    if LooseVersion(torch.__version__) >= LooseVersion('1.7.0'):
         return True
     warnings.warn(f'conv2d_gradfix not supported on PyTorch {torch.__version__}. Falling back to torch.nn.functional.conv2d().')
     return False
@@ -112,12 +107,12 @@ def _conv2d_gradfix(transpose, weight_shape, stride, padding, output_padding, di
                 output = torch.nn.functional.conv2d(input=input, weight=weight, bias=bias, **common_kwargs)
             else: # transpose
                 output = torch.nn.functional.conv_transpose2d(input=input, weight=weight, bias=bias, output_padding=output_padding, **common_kwargs)
-            ctx.save_for_backward(input, weight)
+            ctx.save_for_backward(input, weight, bias)
             return output
 
         @staticmethod
         def backward(ctx, grad_output):
-            input, weight = ctx.saved_tensors
+            input, weight, bias = ctx.saved_tensors
             grad_input = None
             grad_weight = None
             grad_bias = None
@@ -128,7 +123,7 @@ def _conv2d_gradfix(transpose, weight_shape, stride, padding, output_padding, di
                 assert grad_input.shape == input.shape
 
             if ctx.needs_input_grad[1] and not weight_gradients_disabled:
-                grad_weight = Conv2dGradWeight.apply(grad_output, input)
+                grad_weight = Conv2dGradWeight.apply(grad_output, input, bias)
                 assert grad_weight.shape == weight_shape
 
             if ctx.needs_input_grad[2]:
@@ -139,12 +134,19 @@ def _conv2d_gradfix(transpose, weight_shape, stride, padding, output_padding, di
     # Gradient with respect to the weights.
     class Conv2dGradWeight(torch.autograd.Function):
         @staticmethod
-        def forward(ctx, grad_output, input):
-            op = torch._C._jit_get_operation('aten::cudnn_convolution_backward_weight' if not transpose else 'aten::cudnn_convolution_transpose_backward_weight')
-            flags = [torch.backends.cudnn.benchmark, torch.backends.cudnn.deterministic, torch.backends.cudnn.allow_tf32]
-            grad_weight = op(weight_shape, grad_output, input, padding, stride, dilation, groups, *flags)
-            assert grad_weight.shape == weight_shape
-            ctx.save_for_backward(grad_output, input)
+        def forward(ctx, grad_output, input, bias):
+            if old_version:
+                op = torch._C._jit_get_operation(
+                    'aten::cudnn_convolution_backward_weight' if not transpose else 'aten::cudnn_convolution_transpose_backward_weight')
+                flags = [torch.backends.cudnn.benchmark, torch.backends.cudnn.deterministic,
+                         torch.backends.cudnn.allow_tf32]
+                grad_weight = op(weight_shape, grad_output, input, padding, stride, dilation, groups, *flags)
+            else:
+                bias_shape = bias.shape if (bias is not None) else None
+                empty_weight = torch.empty(weight_shape, dtype=input.dtype, layout=input.layout, device=input.device)
+                grad_weight = torch.ops.aten.convolution_backward(grad_output, input, empty_weight, bias_sizes=bias_shape, stride=stride, padding=padding, dilation=dilation, transposed=transpose, output_padding=output_padding, groups=groups, output_mask=[0,1,0])[1]
+                assert grad_weight.shape == weight_shape
+                ctx.save_for_backward(grad_output, input)
             return grad_weight
 
         @staticmethod
