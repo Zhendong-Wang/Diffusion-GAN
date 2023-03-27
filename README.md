@@ -67,7 +67,7 @@ logits = Discrimnator(diffused_images, t)
 ## Train our Diffusion-GAN
 
 ### Requirements
-We provide a `environment.yml` for preparing the running environments. Note here to fit newest PyTorch versions, I made some change in `torch_utils` folder. The performance might have some small perturbations due to different versions of PyTorch. The provided checkpoints were trained on old environment inherited from [StyleGAN2-ADA](https://github.com/NVlabs/stylegan2-ada-pytorch#requirements), and the old environment is detailed as follows: 
+In each folder, we provide a `environment.yml` for preparing the running environments. Note here to fit newest PyTorch versions, I made some change in `torch_utils` folder. The performance might have some small perturbations due to different versions of PyTorch. The provided checkpoints were trained on old environment inherited from [StyleGAN2-ADA](https://github.com/NVlabs/stylegan2-ada-pytorch#requirements), and the old environment is detailed as follows: 
 * 64-bit Python 3.7 and PyTorch 1.7.1/1.8.1. See [https://pytorch.org/](https://pytorch.org/) for PyTorch install instructions.
 * CUDA toolkit 11.0 or later. 
 * Python libraries: `pip install click requests tqdm pyspng ninja imageio-ffmpeg==0.4.3`.
